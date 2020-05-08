@@ -2,49 +2,43 @@ class Node {
   constructor(value){
     this.value = value
     this.next = null
-    // console.log(this.length)
-  }
-
-  push(){
-
-  }
-
-  pop(){
-    if (this.isEmpty()){
-      return null
-    } else if (this.length === 1) {
-      const nodeToRemove = this.head
-      this.head = null
-      this.tail = null
-      return nodeToRemove
-    }
-
-    // while(this.length > 0) {
-    //   if ()
-    // }
-  }
-
-  get index(){
-    
-  }
-
-  delete(index){
-
-  }
-
-  isEmpty(){
-    return this.length === 0 
-  }
-
-  
+  }  
 }
 
 
 class LinkedList {
-  contstructor(){
+  constructor(){
     this.head = null
     this.tail = null
     this.length = 0
+  }
+
+  isEmpty(){
+
+    return this.length === 0 
+  }
+
+  get(index){
+    if (index < 0 || index > this.length || this.isEmpty()){
+      return null
+    }
+
+    if (index === 0) {
+      return this.head
+    }
+
+    if (index === this.length - 1){
+      return this.tail
+    }
+
+    let currentNode = this.head
+    let iterator = 0
+    while (iterator < index) {
+      iterator++
+      currentNode = currentNode.next
+    }
+
+    return currentNode
   }
 
   push(value) {
@@ -55,6 +49,7 @@ class LinkedList {
       this.head = newNode
       this.tail = newNode
     } else {
+      console.log(this.head)
       // Set the current tails next property to point at the node we just created
       this.tail.next = newNode
       // Set the current tail to be the node we just created
@@ -110,8 +105,19 @@ class LinkedList {
       return nodeToRemove
     }
   }
+
+  
 }
 
-const firstNode = new Node(1)
+const firstNode = 'Quinn'
+const secondNode = 'AOL'
+const thirdNode = 'Sparky'
 
-console.log(firstNode.isEmpty())
+const linkedList = new LinkedList()
+
+linkedList.isEmpty()
+linkedList.push(firstNode)
+linkedList.push(secondNode)
+linkedList.push(thirdNode)
+
+linkedList.get(1)
